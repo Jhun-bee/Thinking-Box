@@ -1,0 +1,28 @@
+# 'Thinking Box' 고도화를 위한 Turnback(발화 수정) 통합 설계안
+
+## 1. 설계 목표
+- **목표**: 회의 중 발생하는 "말 바꾸기(Turnback)"를 정확히 인식하여 **최종 유효 결정**만 산출.
+- **효과**: 잘못된/취소된 정보가 문서에 남는 것을 방지.
+
+## 2. 시스템 아키텍처 변경
+- [Before]: Input -> Meaning Filter -> Idea State -> Planner
+- [After]: Input -> **Meaning Filter & Turnback Detector** -> **Context Manager** -> Idea State -> Planner
+
+## 3. 핵심 로직 (논문 적용)
+1. **Single Turnback (단순 변경)**: "A 말고 B로 하죠" -> 값 덮어쓰기.
+2. **Return Turnback (원복)**: "아니, 다시 A로 가죠" -> 이전 이력 복구.
+3. **Dual-Slot Turnback (주제 전환)**: "기능 얘기 말고 디자인부터 하죠" -> 문맥 일시정지 및 전환.
+
+## 4. 데이터 구조 (JSON)
+단순 텍스트가 아닌 '상태(State)'로 관리합니다.
+{
+  "active_slots": {
+    "login_method": {
+      "value": "Google OAuth",
+      "history": ["Email", "Kakao", "Google OAuth"]
+    }
+  }
+}
+
+## 5. UX 제안
+- **신뢰도 신호등**: 번복이 잦았던 주제는 '빨간불'로 표시하여 사용자 재확인 유도.
