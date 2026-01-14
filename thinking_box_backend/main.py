@@ -19,8 +19,9 @@ app.add_middleware(
 )
 
 # Include API Routers
-from app.api.endpoints import stream
+from app.api.endpoints import stream, speaker
 app.include_router(stream.router)
+app.include_router(speaker.router)
 
 @app.get("/")
 async def root():

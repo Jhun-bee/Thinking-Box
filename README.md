@@ -28,6 +28,24 @@
 - **복귀**: "역시 처음 아이디어가 나았어"
 - **주제 전환**: 갑작스러운 의제 변경
 
+### Thinking Box AI (v0.1.0)
+
+Thinking Box AI is a real-time meeting analysis tool that provides live transcription, **speaker identification**, and AI-driven summarization.
+
+## 🚀 Features (v0.1.0)
+- **Real-time Transcription**: Powered by Web Speech API.
+- **Speaker Identification**: Identifies registered speakers using `SpeechBrain` & `ECAPA-TDNN`.
+- **Hallucination Filter**: Filters out background noise and silence to prevent incorrect transcripts.
+- **Meeting Summary**: Generates topic-based summaries, decisions, and turnbacks.
+- **Responsive UI**: 3-panel layout with independent scrolling for efficient monitoring.
+
+## 🛠️ Prerequisites
+- **Python 3.10+**
+- **Node.js 18+**
+- **FFmpeg**: Required for audio processing.
+  - Windows: `winget install ffmpeg` (or download from [ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH).
+  - Mac: `brew install ffmpeg`
+
 ### 📋 회의 요약
 - 회의 종료 시 자동 요약 생성
 - 클립보드 복사 (노션/슬랙 붙여넣기)
